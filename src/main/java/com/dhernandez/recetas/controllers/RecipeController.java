@@ -20,6 +20,16 @@ public class RecipeController {
     ResponseEntity<List<RecipeDto>> findAllRecipes(){
         return new ResponseEntity<>(recipeService.listAllRecipes(), HttpStatus.OK);
     }
+
+    @GetMapping("/detail/{id}")
+    ResponseEntity<RecipeDto> findRecipeById(@PathVariable String id){
+        if(recipeService.getRecipeById(id).isPresent()){
+
+            return new ResponseEntity<>(recipeService.getRecipeById(id).get(),HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     @GetMapping("/find")
     ResponseEntity<List<RecipeDto>> findAllRecipes(@RequestParam String name){
         return new ResponseEntity<>(recipeService.listAllRecipesByName(name), HttpStatus.OK);
