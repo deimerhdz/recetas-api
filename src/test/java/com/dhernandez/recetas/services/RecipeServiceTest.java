@@ -20,6 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.BDDMockito.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -117,6 +118,18 @@ public class RecipeServiceTest {
         recipeServiceImpl.deleteRecipeById("1l");
         //then
         verify(recipeRepository,times(1)).deleteById("1l");
+    }
+
+    @DisplayName("get recipe by id")
+    @Test
+    void getRecipeTest(){
+        //given
+        given(recipeMapper.toRecipeDto(any())).willReturn(recipeDto);
+        given(recipeRepository.findById("1L")).willReturn(Optional.of(recipe));
+        //when
+        RecipeDto recipeDto1 = recipeServiceImpl.getRecipeById("1L").get();
+        //then
+        assertThat(recipeDto1).isNotNull();
     }
 
 
