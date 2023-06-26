@@ -9,10 +9,10 @@ public class MesureTest {
     void test(){
 
         Measure measure = new Measure();
-        measure.setId(1l);
+        measure.setId("1l");
         measure.setName("Kilogramo");
 
-        assertEquals(1l,measure.getId());
+        assertEquals("1l",measure.getId());
         assertEquals("Kilogramo",measure.getName());
     }
 }
