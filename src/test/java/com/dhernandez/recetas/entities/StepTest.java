@@ -11,7 +11,7 @@ public class StepTest {
         Step step = new Step("sad","hervir agua");
 
         assertEquals("sad",step.getId());
-        assertEquals("Cebolla",step.getDescription());
+        assertEquals("hervir agua",step.getDescription());
 
     }
 }
